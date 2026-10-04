@@ -18,6 +18,8 @@ De websitebestanden bewerk je in WebLab. Deze README wordt automatisch beheerd e
 Tijden staan in UTC. WebLab werkt dit logboek automatisch bij bij aanmaken, opslaan en Run.
 
 <!-- arhc-weblab:log:start -->
+### Eerder logboek (UTC)
+
 | Datum en tijd (UTC) | Actie | Bestanden | Verwachting voor Run |
 | --- | --- | ---: | --- |
 | 2026-10-04T15:21:39.933Z | Aangemaakt | 0 | — |
@@ -25,4 +27,25 @@ Tijden staan in UTC. WebLab werkt dit logboek automatisch bij bij aanmaken, opsl
 | 2026-10-04T15:25:51.024Z | Opslaan | 3 | — |
 | 2026-10-04T15:26:02.081Z | Run | 3 | dit een mooie website wordt |
 | 2026-10-04T18:14:47.459Z | Run | 3 | jij |
+
+### Gebeurtenissen (Europe/Amsterdam)
+
+Nieuwe gebeurtenissen gebruiken de tijdzone Europe/Amsterdam met UTC-offset. Een eerdere UTC-vermelding hoort alleen bij het historische logboek.
+
+
+<details>
+<summary>04-10-2026 21:27:20 (UTC+02:00) | Run | roanvanblanken | 0 gewijzigde bestanden (+0/−0)</summary>
+
+- **Uitgevoerd door:** roanvanblanken
+- **Branch:** main
+- **Websitebestanden na deze actie:** 3
+- **Vorige opgeslagen versie:** [1c003f58c17e59e8a4a3a4f39ac807a66d085a96](https://github.com/roanvanblanken/html3/commit/1c003f58c17e59e8a4a3a4f39ac807a66d085a96)
+
+Geen websitebestanden gewijzigd.
+
+**Verwachting voor Run**
+
+jjjjjjjjjjjjj
+
+</details>
 <!-- arhc-weblab:log:end -->
