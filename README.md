@@ -21,4 +21,5 @@ Tijden staan in UTC. WebLab werkt dit logboek automatisch bij bij aanmaken, opsl
 | Datum en tijd (UTC) | Actie | Bestanden | Verwachting voor Run |
 | --- | --- | ---: | --- |
 | 2026-10-04T15:21:39.933Z | Aangemaakt | 0 | — |
+| 2026-10-04T15:22:03.047Z | Run | 3 | er een error komt |
 <!-- arhc-weblab:log:end -->
