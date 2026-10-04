@@ -3,11 +3,803 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mijn website</title>
-  <link rel="stylesheet" href="style.css">
+
+  <title>Mijn Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #09090f;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* ACHTERGROND */
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #6c3cff;
+      filter: blur(180px);
+      opacity: 0.35;
+      top: -200px;
+      left: -150px;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #00d9ff;
+      filter: blur(200px);
+      opacity: 0.2;
+      bottom: -200px;
+      right: -150px;
+      z-index: -1;
+    }
+
+    /* NAVIGATIE */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 75px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 0 8%;
+
+      background: rgba(9, 9, 15, 0.7);
+      backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #8b5cff;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 35px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ccc;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 120px 20px 60px;
+    }
+
+    .hero-content {
+      max-width: 950px;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 8px 18px;
+
+      background: rgba(139, 92, 255, 0.12);
+      border: 1px solid rgba(139, 92, 255, 0.4);
+
+      border-radius: 50px;
+
+      color: #b99cff;
+
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 9vw, 105px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 30px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #8b5cff, #00d9ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+
+      color: #aaa;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 40px;
+
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 28px;
+
+      border-radius: 10px;
+
+      text-decoration: none;
+      color: white;
+
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: linear-gradient(90deg, #7447ff, #9c63ff);
+
+      box-shadow: 0 10px 40px rgba(116, 71, 255, 0.35);
+    }
+
+    .secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+    }
+
+    /* SCROLL INDICATOR */
+
+    .scroll {
+      position: absolute;
+      bottom: 30px;
+
+      color: #777;
+
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    /* ALGEMENE SECTIES */
+
+    section {
+      padding: 110px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title span {
+      color: #8b5cff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(35px, 5vw, 55px);
+      margin-top: 10px;
+    }
+
+    .section-title p {
+      color: #888;
+      max-width: 600px;
+      margin: 15px auto;
+      line-height: 1.6;
+    }
+
+    /* CARDS */
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+      gap: 22px;
+
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      padding: 30px;
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,0.04);
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      transition: 0.35s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+
+      border-color: rgba(139,92,255,0.7);
+
+      background: rgba(139,92,255,0.08);
+
+      box-shadow:
+        0 25px 60px rgba(0,0,0,0.3);
+    }
+
+    .card-icon {
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 14px;
+
+      background: linear-gradient(
+        135deg,
+        #7447ff,
+        #00bfff
+      );
+
+      font-size: 25px;
+
+      margin-bottom: 25px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #999;
+      line-height: 1.6;
+    }
+
+    /* STATS */
+
+    .stats {
+      max-width: 1100px;
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+      text-align: center;
+
+      background: rgba(255,255,255,0.035);
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      border-radius: 25px;
+
+      overflow: hidden;
+    }
+
+    .stat {
+      padding: 45px 20px;
+    }
+
+    .stat h3 {
+      font-size: 45px;
+      color: #9e7aff;
+    }
+
+    .stat p {
+      color: #888;
+      margin-top: 8px;
+    }
+
+    /* OVER */
+
+    .about {
+      max-width: 1100px;
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 70px;
+
+      align-items: center;
+    }
+
+    .about-visual {
+      min-height: 430px;
+
+      border-radius: 30px;
+
+      background:
+        radial-gradient(
+          circle at 30% 30%,
+          #8859ff,
+          transparent 40%
+        ),
+        radial-gradient(
+          circle at 70% 70%,
+          #00bde8,
+          transparent 40%
+        ),
+        #12121d;
+
+      border: 1px solid rgba(255,255,255,0.1);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 100px;
+
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.3);
+    }
+
+    .about-text h2 {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: #999;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* CTA */
+
+    .cta {
+      max-width: 1100px;
+
+      margin: 80px auto;
+
+      padding: 80px 30px;
+
+      text-align: center;
+
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(116,71,255,0.3),
+          rgba(0,217,255,0.12)
+        );
+
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cta h2 {
+      font-size: clamp(35px, 5vw, 60px);
+    }
+
+    .cta p {
+      color: #aaa;
+      margin: 20px auto 30px;
+      max-width: 600px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+
+      padding: 40px;
+
+      color: #666;
+
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* SCROLL ANIMATIE */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+
+      transition:
+        opacity 0.8s,
+        transform 0.8s;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+      nav ul {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        min-height: 300px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Mijn website</h1>
-  <script src="script.js"></script>
-</body
+
+  <!-- NAVIGATIE -->
+
+  <nav>
+    <div class="logo">
+      MIJN<span>WEBSITE.</span>
+    </div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#diensten">Diensten</a></li>
+      <li><a href="#over">Over mij</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        ✦ Welkom op mijn website
+      </div>
+
+      <h1>
+        Websites die
+        <span class="gradient">opvallen.</span>
+      </h1>
+
+      <p>
+        Een moderne, snelle en interactieve website.
+        Alles wat je hier ziet zit gewoon in één enkel
+        HTML-bestand.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#diensten" class="button primary">
+          Bekijk meer →
+        </a>
+
+        <a href="#contact" class="button secondary">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="scroll">
+      ↓ scroll
+    </div>
+
+  </section>
+
+
+  <!-- DIENSTEN -->
+
+  <section id="diensten" class="reveal">
+
+    <div class="section-title">
+
+      <span>Wat ik doe</span>
+
+      <h2>
+        Alles wat je nodig hebt.
+      </h2>
+
+      <p>
+        Van het eerste idee tot een compleet werkende website.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">
+          ⚡
+        </div>
+
+        <h3>Snel</h3>
+
+        <p>
+          Lichtgewicht websites zonder onnodige onderdelen.
+          Hierdoor laden pagina's razendsnel.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          ✦
+        </div>
+
+        <h3>Modern</h3>
+
+        <p>
+          Moderne vormgeving met animaties, gradients,
+          glassmorphism en strakke typografie.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          📱
+        </div>
+
+        <h3>Responsive</h3>
+
+        <p>
+          De website past zich automatisch aan voor
+          computers, tablets en smartphones.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          ⚙
+        </div>
+
+        <h3>Interactief</h3>
+
+        <p>
+          JavaScript zorgt voor animaties en interactieve
+          onderdelen op de website.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STATISTIEKEN -->
+
+  <section class="reveal">
+
+    <div class="stats">
+
+      <div class="stat">
+        <h3>100%</h3>
+        <p>Responsive</p>
+      </div>
+
+      <div class="stat">
+        <h3>1</h3>
+        <p>HTML-bestand</p>
+      </div>
+
+      <div class="stat">
+        <h3>0</h3>
+        <p>Frameworks nodig</p>
+      </div>
+
+      <div class="stat">
+        <h3>∞</h3>
+        <p>Mogelijkheden</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- OVER -->
+
+  <section id="over" class="reveal">
+
+    <div class="about">
+
+      <div class="about-visual">
+        🚀
+      </div>
+
+      <div class="about-text">
+
+        <h2>
+          Simpel.
+          <span class="gradient">Maar vet.</span>
+        </h2>
+
+        <p>
+          Voor een goede website heb je niet per se tientallen
+          bestanden, frameworks en libraries nodig.
+        </p>
+
+        <p>
+          Deze complete pagina gebruikt alleen HTML, CSS en
+          JavaScript. Alles staat overzichtelijk in hetzelfde
+          bestand.
+        </p>
+
+        <a href="#contact" class="button primary">
+          Meer weten →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="reveal">
+
+    <div class="cta">
+
+      <h2>
+        Klaar om iets
+        <span class="gradient">gaafs</span>
+        te maken?
+      </h2>
+
+      <p>
+        Dit is jouw website. Pas de teksten, kleuren,
+        onderdelen en inhoud aan en maak er iets unieks van.
+      </p>
+
+      <a
+        href="mailto:voorbeeld@email.nl"
+        class="button primary"
+      >
+        Neem contact op →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    © <span id="jaar"></span> Mijn Website · Gemaakt met HTML, CSS & JavaScript
+  </footer>
+
+
+  <script>
+
+    // JAARTAL AUTOMATISCH
+
+    document.getElementById("jaar").textContent =
+      new Date().getFullYear();
+
+
+    // ELEMENTEN LATEN VERSCHIJNEN TIJDENS SCROLLEN
+
+    const reveals =
+      document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+
+      reveals.forEach(element => {
+
+        const top =
+          element.getBoundingClientRect().top;
+
+        const schermHoogte =
+          window.innerHeight;
+
+        if (top < schermHoogte - 100) {
+          element.classList.add("active");
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      "scroll",
+      revealOnScroll
+    );
+
+    revealOnScroll();
+
+
+    // KLEIN EFFECT OP DE MUIS
+
+    document.addEventListener(
+      "mousemove",
+      function(event) {
+
+        const x =
+          event.clientX / window.innerWidth;
+
+        const y =
+          event.clientY / window.innerHeight;
+
+        document.body.style.backgroundPosition =
+          `${x * 20}px ${y * 20}px`;
+
+      }
+    );
+
+  </script>
+
+</body>
 </html>
